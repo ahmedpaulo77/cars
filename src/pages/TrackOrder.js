@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import "./TrackOrder.css";
 
 function TrackOrder() {
+  const { t } = useLanguage();
   const [trackingNumber, setTrackingNumber] = useState("");
   const [status, setStatus] = useState(null);
 
@@ -9,13 +11,12 @@ function TrackOrder() {
     e.preventDefault();
     if (!trackingNumber.trim()) return;
 
-    // محاكاة نتيجة تتبع الشحنة
     setStatus({
       id: trackingNumber,
-      state: "في الطريق إلى الميناء",
-      origin: "ميناء ميناء غوانزو (الصين)",
-      destination: "ميناء الإسكندرية (مصر)",
-      estimatedDelivery: "15 أغسطس 2026",
+      state: t.track.defaultState,
+      origin: t.track.defaultOrigin,
+      destination: t.track.defaultDest,
+      estimatedDelivery: t.track.defaultDate,
     });
   };
 
@@ -23,8 +24,8 @@ function TrackOrder() {
     <div className="track-page">
       <div className="page-header">
         <div className="container">
-          <h1>تتبع الشحنات والاستيراد</h1>
-          <p>أدخل رقم الشحنة أو بوليصة الشحن لمتابعة خط سير طلبك</p>
+          <h1>{t.track.title}</h1>
+          <p>{t.track.subtitle}</p>
         </div>
       </div>
 
@@ -32,31 +33,31 @@ function TrackOrder() {
         <form onSubmit={handleTrack} className="track-form">
           <input
             type="text"
-            placeholder="أدخل رقم البوليصة / الشحنة (مثال: TRK-9982)"
+            placeholder={t.track.placeholder}
             value={trackingNumber}
             onChange={(e) => setTrackingNumber(e.target.value)}
             required
           />
           <button type="submit" className="btn-primary">
-            تتبع الآن
+            {t.track.btn}
           </button>
         </form>
 
         {status && (
           <div className="status-result">
-            <h3>تفاصيل الشحنة رقم: {status.id}</h3>
+            <h3>{t.track.resultTitle} {status.id}</h3>
             <div className="status-timeline">
               <div className="status-item">
-                <strong>الحالة الحالية:</strong> {status.state}
+                <strong>{t.track.state}</strong> {status.state}
               </div>
               <div className="status-item">
-                <strong>بلد القيام:</strong> {status.origin}
+                <strong>{t.track.origin}</strong> {status.origin}
               </div>
               <div className="status-item">
-                <strong>الوجهة:</strong> {status.destination}
+                <strong>{t.track.destination}</strong> {status.destination}
               </div>
               <div className="status-item">
-                <strong>الوصول المتوقع:</strong> {status.estimatedDelivery}
+                <strong>{t.track.estDelivery}</strong> {status.estimatedDelivery}
               </div>
             </div>
           </div>

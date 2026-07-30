@@ -1,95 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
+import { useLanguage } from "../context/LanguageContext";
 import "./RequestQuote.css";
 
 function RequestQuote() {
-  const [formData, setFormData] = useState({
-    companyName: "",
-    contactName: "",
-    phone: "",
-    partType: "",
-    quantity: "",
-    notes: "",
-  });
+  const { t } = useLanguage();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("تم استلام طلب التسعير بنجاح، سيقوم فريق المبيعات بالتواصل معك.");
+    alert(t.quote.alertMsg);
   };
 
   return (
     <div className="quote-page">
       <div className="page-header">
         <div className="container">
-          <h1>طلب تسعير شحنة (B2B)</h1>
-          <p>مخصص للتجار والمستوردين للطلبات الكبيرة والكميات</p>
+          <h1>{t.quote.title}</h1>
+          <p>{t.quote.subtitle}</p>
         </div>
       </div>
 
       <div className="container page-body">
         <form onSubmit={handleSubmit} className="quote-form">
           <div className="form-group">
-            <label>اسم الشركة / المحل:</label>
-            <input
-              type="text"
-              required
-              onChange={(e) =>
-                setFormData({ ...formData, companyName: e.target.value })
-              }
-            />
+            <label>{t.quote.company}</label>
+            <input type="text" required />
           </div>
           <div className="form-group">
-            <label>اسم المسؤول:</label>
-            <input
-              type="text"
-              required
-              onChange={(e) =>
-                setFormData({ ...formData, contactName: e.target.value })
-              }
-            />
+            <label>{t.quote.name}</label>
+            <input type="text" required />
           </div>
           <div className="form-group">
-            <label>رقم الهاتف / الواتساب:</label>
-            <input
-              type="tel"
-              required
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
-            />
+            <label>{t.quote.phone}</label>
+            <input type="tel" required />
           </div>
           <div className="form-group">
-            <label>نوع قطع الغيار المطلوبة:</label>
-            <input
-              type="text"
-              placeholder="مثال: فلاتر زيت كيا وهيونداي"
-              required
-              onChange={(e) =>
-                setFormData({ ...formData, partType: e.target.value })
-              }
-            />
+            <label>{t.quote.partType}</label>
+            <input type="text" placeholder={t.quote.partPlaceholder} required />
           </div>
           <div className="form-group">
-            <label>الكمية المتوقعة:</label>
-            <input
-              type="number"
-              placeholder="عدد القطع أو الحاويات"
-              required
-              onChange={(e) =>
-                setFormData({ ...formData, quantity: e.target.value })
-              }
-            />
+            <label>{t.quote.quantity}</label>
+            <input type="text" placeholder={t.quote.qtyPlaceholder} required />
           </div>
           <div className="form-group">
-            <label>تفاصيل أخرى / ملاحظات:</label>
-            <textarea
-              rows="4"
-              onChange={(e) =>
-                setFormData({ ...formData, notes: e.target.value })
-              }
-            ></textarea>
+            <label>{t.quote.notes}</label>
+            <textarea rows="4"></textarea>
           </div>
           <button type="submit" className="btn-primary">
-            إرسال طلب التسعير
+            {t.quote.submitBtn}
           </button>
         </form>
       </div>

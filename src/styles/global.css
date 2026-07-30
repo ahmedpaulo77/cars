@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Inter:wght@300;400;600;700;800;900&display=swap');
 
 :root {
   --primary: #2563eb;
@@ -18,7 +18,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Cairo', sans-serif;
 }
 
 body {
@@ -27,6 +26,34 @@ body {
   direction: rtl;
   text-align: right;
   overflow-x: hidden;
+}
+
+/* Arabic font */
+[dir="rtl"] body,
+[lang="ar"] body,
+[dir="rtl"] * {
+  font-family: 'Cairo', sans-serif;
+}
+
+/* English font */
+[dir="ltr"] body,
+[lang="en"] body,
+[dir="ltr"] * {
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+}
+
+/* LTR layout adjustments */
+[dir="ltr"] .page-header {
+  text-align: center;
+}
+
+[dir="ltr"] .nav-container {
+  flex-direction: row;
+}
+
+[dir="ltr"] .footer-container {
+  text-align: left;
 }
 
 a {

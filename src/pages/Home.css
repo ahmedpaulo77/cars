@@ -1,61 +1,168 @@
-.featured-section {
-  padding: 80px 0;
+/* Quick Finder */
+.quick-finder-section {
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 60px;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 50px;
+.finder-box {
+  background: var(--bg-card);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.section-header h2 {
-  font-size: 2.2rem;
-  font-weight: 800;
+.finder-box h3 {
   color: #fff;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.section-header p {
-  color: var(--text-muted);
+.finder-inputs {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.products-grid {
+.finder-inputs select,
+.finder-inputs input {
+  flex: 1;
+  min-width: 220px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.finder-btn {
+  padding: 14px 30px;
+  white-space: nowrap;
+}
+
+/* Why Us Section */
+.why-us-section {
+  padding: 90px 0;
+  background-color: #0b1120;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.why-us-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
+  margin-top: 40px;
 }
 
-.view-more-container {
-  text-align: center;
-  margin-top: 50px;
+.why-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 35px 25px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  text-align: right;
 }
 
-.cta-section {
-  background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
-  padding: 70px 0;
-  border-radius: 20px;
-  margin: 40px 0 80px;
-  text-align: center;
+.why-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
 }
 
-.cta-content h2 {
-  font-size: 2.2rem;
-  font-weight: 800;
+.why-icon {
+  font-size: 2.5rem;
+  margin-bottom: 18px;
+}
+
+.why-card h3 {
   color: #fff;
-  margin-bottom: 15px;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
 }
 
-.cta-content p {
+.why-card p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* Brands Section */
+.brands-section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.brands-section h3 {
+  color: var(--text-muted);
   font-size: 1.1rem;
-  color: #e2e8f0;
   margin-bottom: 30px;
 }
 
-.cta-section .btn-primary {
-  background: #fff;
-  color: var(--primary);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.brands-logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
-.cta-section .btn-primary:hover {
-  background: #f8fafc;
+.brand-item {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #475569;
+  letter-spacing: 2px;
+  transition: var(--transition);
+}
+
+.brand-item:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+/* Testimonials */
+.testimonials-section {
+  padding: 80px 0;
+  background-color: var(--bg-card);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background-color: var(--bg-dark);
+  padding: 30px;
+  border-radius: var(--radius);
+  border-right: 4px solid var(--accent);
+}
+
+.testimonial-card p {
+  color: #e2e8f0;
+  font-style: italic;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.testimonial-card h4 {
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.dark-btn {
+  background: var(--bg-dark);
+  color: #fff;
 }

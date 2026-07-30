@@ -1,18 +1,20 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import products from "../data/products";
+import { useLanguage } from "../context/LanguageContext";
 import "./ProductDetails.css";
 
 function ProductDetails() {
   const { id } = useParams();
+  const { t } = useLanguage();
   const product = products.find((p) => p.id === parseInt(id));
 
   if (!product) {
     return (
       <div className="container page-body not-found">
-        <h2>المنتج غير موجود!</h2>
+        <h2>{t.productDetails.notFound}</h2>
         <Link to="/products" className="btn-primary">
-          العودة للكتالوج
+          {t.productDetails.backBtn}
         </Link>
       </div>
     );
@@ -33,20 +35,20 @@ function ProductDetails() {
 
             <div className="specs-list">
               <div className="spec-item">
-                <strong>الماركة:</strong> {product.brand}
+                <strong>{t.productDetails.brand}</strong> {product.brand}
               </div>
               <div className="spec-item">
-                <strong>الموديلات المتوافقة:</strong>{" "}
-                {product.models ? product.models.join("، ") : "جميع الموديلات"}
+                <strong>{t.productDetails.compatibleModels}</strong>{" "}
+                {product.models ? product.models.join("، ") : t.productDetails.allModels}
               </div>
             </div>
 
             <div className="action-buttons">
               <Link to="/request-quote" className="btn-primary">
-                طلب تسعير للشحنات
+                {t.productDetails.quoteBtn}
               </Link>
               <Link to="/contact" className="btn-secondary">
-                تواصل مع المبيعات
+                {t.productDetails.contactBtn}
               </Link>
             </div>
           </div>

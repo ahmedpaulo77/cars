@@ -1,35 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 import "./Footer.css";
 
 function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer">
       <div className="container footer-container">
         <div className="footer-col">
           <h3>GLOBAL AUTO PARTS</h3>
-          <p>
-            شركتكم المتخصصة الأولى في استيراد وتصدير قطع غيار السيارات أصلية وتجارية مباشرة من أفضل المصنعين عالمياً.
-          </p>
+          <p>{t.footer.desc}</p>
         </div>
         <div className="footer-col">
-          <h4>روابط سريعة</h4>
+          <h4>{t.footer.quickLinks}</h4>
           <ul>
-            <li><Link to="/products">كتالوج المنتجات</Link></li>
-            <li><Link to="/track-order">تتبع البولصات والشحنات</Link></li>
-            <li><Link to="/request-quote">طلب تسعير جملة</Link></li>
-            <li><Link to="/about">عن الشركة</Link></li>
+            <li><Link to="/products">{t.nav.products}</Link></li>
+            <li><Link to="/track-order">{t.nav.track}</Link></li>
+            <li><Link to="/request-quote">{t.nav.quote}</Link></li>
+            <li><Link to="/about">{t.nav.about}</Link></li>
           </ul>
         </div>
         <div className="footer-col">
-          <h4>تواصل معنا</h4>
-          <p>القاهرة، المنطقة اللوجستية والشحن</p>
-          <p>هاتف: 01000000000</p>
-          <p>إيميل: import@globalautoparts.com</p>
+          <h4>{t.footer.contactUs}</h4>
+          <p>{t.contact.address}</p>
+          <p>{t.contact.phone}</p>
+          <p>{t.contact.email}</p>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>جميع الحقوق محفوظة © {new Date().getFullYear()} Global Auto Parts</p>
+        <p>{t.footer.rights} {new Date().getFullYear()} Global Auto Parts</p>
       </div>
     </footer>
   );
