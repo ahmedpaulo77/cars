@@ -1,0 +1,47 @@
+.track-form {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  display: flex;
+  gap: 12px;
+}
+
+.track-form input {
+  flex: 1;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  outline: none;
+}
+
+.status-result {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 30px;
+}
+
+.status-result h3 {
+  color: #fff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.status-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status-item {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.status-item strong {
+  color: var(--primary);
+}
