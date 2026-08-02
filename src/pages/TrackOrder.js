@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import { useLanguage } from "../context/LanguageContext";
 import "./TrackOrder.css";
 
@@ -6,18 +8,41 @@ function TrackOrder() {
   const { t } = useLanguage();
   const [trackingNumber, setTrackingNumber] = useState("");
   const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
 
-  const handleTrack = (e) => {
+  const handleTrack = async (e) => {
     e.preventDefault();
     if (!trackingNumber.trim()) return;
 
-    setStatus({
-      id: trackingNumber,
-      state: t.track.defaultState,
-      origin: t.track.defaultOrigin,
-      destination: t.track.defaultDest,
-      estimatedDelivery: t.track.defaultDate,
-    });
+    setLoading(true);
+    setStatus(null);
+    setNotFound(false);
+
+    try {
+      // بنروح لـ Firestore وندور جوه collection اسمه "shipments"
+      // على document الـ ID بتاعه هو رقم الشحنة اللي العميل كتبه
+      const docRef = doc(db, "shipments", trackingNumber.trim());
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setStatus({
+          id: trackingNumber,
+          state: data.state,
+          origin: data.origin,
+          destination: data.destination,
+          estimatedDelivery: data.estimatedDelivery,
+        });
+      } else {
+        setNotFound(true);
+      }
+    } catch (error) {
+      console.error("خطأ في جلب بيانات الشحنة:", error);
+      setNotFound(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -38,10 +63,16 @@ function TrackOrder() {
             onChange={(e) => setTrackingNumber(e.target.value)}
             required
           />
-          <button type="submit" className="btn-primary">
-            {t.track.btn}
+          <button type="submit" className="btn-primary" disabled={loading}>
+            {loading ? "جاري البحث..." : t.track.btn}
           </button>
         </form>
+
+        {notFound && (
+          <div className="status-result not-found">
+            <p>⚠️ لا يوجد شحنة بهذا الرقم. تأكد من الرقم وحاول مرة أخرى.</p>
+          </div>
+        )}
 
         {status && (
           <div className="status-result">

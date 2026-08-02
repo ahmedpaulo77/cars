@@ -13,6 +13,22 @@ function Home() {
 
   const [searchBrand, setSearchBrand] = useState("");
   const [searchModel, setSearchModel] = useState("");
+  const [openFaq, setOpenFaq] = useState(0);
+
+  const processSteps = [
+    { title: t.process.step1Title, desc: t.process.step1Desc, icon: "📝" },
+    { title: t.process.step2Title, desc: t.process.step2Desc, icon: "🤝" },
+    { title: t.process.step3Title, desc: t.process.step3Desc, icon: "🔍" },
+    { title: t.process.step4Title, desc: t.process.step4Desc, icon: "🚢" },
+    { title: t.process.step5Title, desc: t.process.step5Desc, icon: "📦" },
+  ];
+
+  const faqItems = [
+    { q: t.faq.q1, a: t.faq.a1 },
+    { q: t.faq.q2, a: t.faq.a2 },
+    { q: t.faq.q3, a: t.faq.a3 },
+    { q: t.faq.q4, a: t.faq.a4 },
+  ];
 
   return (
     <div className="home-page">
@@ -107,7 +123,30 @@ function Home() {
         </div>
       </section>
 
-      {/* 6. Supported Brands */}
+      {/* 6. NEW: How It Works / Process */}
+      <section className="process-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t.process.title}</h2>
+            <p>{t.process.desc}</p>
+          </div>
+
+          <div className="process-timeline">
+            {processSteps.map((step, index) => (
+              <div className="process-step" key={index}>
+                <div className="process-icon">{step.icon}</div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+                {index !== processSteps.length - 1 && (
+                  <div className="process-line"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Supported Brands */}
       <section className="brands-section">
         <div className="container">
           <h3>{t.home.brandsTitle}</h3>
@@ -122,7 +161,7 @@ function Home() {
         </div>
       </section>
 
-      {/* 7. Testimonials */}
+      {/* 8. Testimonials */}
       <section className="testimonials-section">
         <div className="container">
           <div className="section-header">
@@ -141,7 +180,33 @@ function Home() {
         </div>
       </section>
 
-      {/* 8. CTA */}
+      {/* 9. NEW: FAQ */}
+      <section className="faq-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t.faq.title}</h2>
+            <p>{t.faq.desc}</p>
+          </div>
+
+          <div className="faq-list">
+            {faqItems.map((item, index) => (
+              <div
+                key={index}
+                className={`faq-item ${openFaq === index ? "open" : ""}`}
+                onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
+              >
+                <div className="faq-question">
+                  <span>{item.q}</span>
+                  <span className="faq-toggle">{openFaq === index ? "−" : "+"}</span>
+                </div>
+                {openFaq === index && <p className="faq-answer">{item.a}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10. CTA */}
       <section className="cta-section">
         <div className="container cta-content">
           <h2>{t.home.ctaTitle}</h2>

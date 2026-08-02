@@ -54,6 +54,32 @@ const translations = {
       ctaBtn1: "طلب تسعير شحنة جملة",
       ctaBtn2: "التحدث مع خبير استيراد",
     },
+    process: {
+      title: "إزاي بتتم عملية الاستيراد معانا؟",
+      desc: "خطوات واضحة ومنظمة من لحظة الطلب لحد استلام شحنتك",
+      step1Title: "1. إرسال الطلب",
+      step1Desc: "ترسل تفاصيل القطع المطلوبة والكمية عبر فورم طلب التسعير أو تواصل مباشر مع فريق المبيعات.",
+      step2Title: "2. تأكيد السعر والتعاقد",
+      step2Desc: "نرسل عرض سعر تفصيلي شامل الشحن والجمارك، وبعد الموافقة يتم توقيع الاتفاق.",
+      step3Title: "3. فحص الجودة والتعبئة",
+      step3Desc: "فريقنا في المصدر يفحص القطع فحصاً كاملاً قبل التعبئة والشحن لضمان مطابقتها للمواصفات.",
+      step4Title: "4. الشحن والتخليص الجمركي",
+      step4Desc: "نتابع شحنتك أولاً بأول وننهي كل إجراءات التخليص الجمركي نيابة عنك حتى تصل بسلاسة.",
+      step5Title: "5. التسليم النهائي",
+      step5Desc: "تستلم شحنتك في الموعد المتفق عليه مع كافة الفواتير والشهادات الرسمية.",
+    },
+    faq: {
+      title: "الأسئلة الشائعة",
+      desc: "إجابات على أكثر الأسئلة اللي بتوصلنا من عملائنا وشركائنا",
+      q1: "إيه أقل كمية تقدروا تصدروها أو تستوردوها؟",
+      a1: "بنتعامل مع الكميات الكبيرة والجملة بشكل أساسي، ولكن نوفر أيضاً حلول لأصحاب المحلات بكميات أصغر حسب نوع القطعة والاتفاق.",
+      q2: "قد إيه بياخد وقت الشحن من بلد المنشأ لمصر؟",
+      a2: "يختلف حسب الدولة ونوع الشحن (بحري أو جوي)، لكن غالباً بين 15 إلى 30 يوم للشحن البحري من اليابان أو كوريا.",
+      q3: "هل بتتكفلوا بالتخليص الجمركي؟",
+      a3: "أيوه، فريقنا المتخصص بيتابع كل إجراءات التخليص الجمركي والشهادات نيابة عن العميل بالكامل.",
+      q4: "هل القطع مضمونة ولها ضمان؟",
+      a4: "كل القطع اللي بنستوردها أصلية ومصحوبة بشهادات مطابقة، وبتتفحص فحص جودة كامل قبل الشحن.",
+    },
     about: {
       title: "من نحن",
       subtitle: "شركاء الاستيراد الموثوقون للتجار والموزعين في مصر والشرق الأوسط",
@@ -199,6 +225,32 @@ const translations = {
       ctaBtn1: "Request Wholesale Shipment Quote",
       ctaBtn2: "Talk to an Import Expert",
     },
+    process: {
+      title: "How Our Import Process Works",
+      desc: "Clear, organized steps from the moment you order until your shipment arrives",
+      step1Title: "1. Submit Your Request",
+      step1Desc: "Send us the part details and quantity you need through the quote form or by contacting our sales team directly.",
+      step2Title: "2. Price Confirmation & Agreement",
+      step2Desc: "We send a detailed quote including shipping and customs costs, and sign the agreement upon your approval.",
+      step3Title: "3. Quality Check & Packing",
+      step3Desc: "Our team at the source thoroughly inspects the parts before packing and shipping to ensure they meet specifications.",
+      step4Title: "4. Shipping & Customs Clearance",
+      step4Desc: "We track your shipment closely and handle all customs clearance procedures on your behalf until it arrives smoothly.",
+      step5Title: "5. Final Delivery",
+      step5Desc: "You receive your shipment on the agreed date along with all official invoices and certificates.",
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      desc: "Answers to the most common questions from our clients and partners",
+      q1: "What's the minimum quantity you can export or import?",
+      a1: "We mainly deal with bulk and wholesale quantities, but we also offer solutions for shop owners with smaller quantities depending on the part type and agreement.",
+      q2: "How long does shipping take from the origin country to Egypt?",
+      a2: "It varies by country and shipping method (sea or air), but typically ranges from 15 to 30 days for sea freight from Japan or Korea.",
+      q3: "Do you handle customs clearance?",
+      a3: "Yes, our specialized team handles all customs clearance procedures and certificates on behalf of the client entirely.",
+      q4: "Are the parts guaranteed and warrantied?",
+      a4: "All parts we import are original and come with conformity certificates, and undergo full quality inspection before shipping.",
+    },
     about: {
       title: "About Us",
       subtitle: "Trusted import partners for traders and distributors in Egypt and the Middle East",
@@ -301,7 +353,6 @@ export function LanguageProvider({ children }) {
     setLang((prev) => (prev === "ar" ? "en" : "ar"));
   };
 
-  // تحديث اتجاه الصفحة ولغتها تلقائياً
   useEffect(() => {
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     document.documentElement.lang = lang;

@@ -7,14 +7,7 @@ import "./Products.css";
 const CATEGORIES_AR = ["الكل", "فرامل", "فلاتر", "كهرباء", "محرك", "تعليق"];
 const CATEGORIES_EN = ["All", "Brakes", "Filters", "Electrical", "Engine", "Suspension"];
 
-const CATEGORY_MAP_EN_TO_AR = {
-  All: "الكل",
-  Brakes: "فرامل",
-  Filters: "فلاتر",
-  Electrical: "كهرباء",
-  Engine: "محرك",
-  Suspension: "تعليق",
-};
+ 
 
 const BRANDS    = ["All", "Toyota", "Hyundai", "Chevrolet", "Nissan", "Kia"];
 const BRANDS_AR = ["الكل", "Toyota", "Hyundai", "Chevrolet", "Nissan", "Kia"];

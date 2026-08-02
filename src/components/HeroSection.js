@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
+import z1 from "../images/z1.jpg";
 import "./HeroSection.css";
 
 function HeroSection() {
@@ -8,6 +9,18 @@ function HeroSection() {
 
   return (
     <section className="hero">
+      <img
+        src={z1}
+        alt=""
+        className="hero-bg-img"
+        aria-hidden="true"
+        loading="eager"
+      />
+
+      <div className="hero-overlay" aria-hidden="true" />
+      <div className="hero-glow" aria-hidden="true" />
+      <div className="hero-fade" aria-hidden="true" />
+
       <div className="container hero-container">
         <div className="hero-content">
           <span className="hero-badge">{t.hero.badge}</span>
